@@ -29,7 +29,7 @@ const addBooksHandler = (request, h) => {
     finished = true
   }
 
-  const insertedAt = new Date().toISOString
+  const insertedAt = new Date().toISOString()
   const updatedAt = insertedAt
 
   books.push({
@@ -58,6 +58,55 @@ const addBooksHandler = (request, h) => {
   return response
 }
 
+const getAllBooksHandler = () => {
+  if (books.length > 0) {
+    const booksLite = books.map((b) => {
+      const { id, name, publisher } = b
+      const temp = {
+        id, name, publisher
+      }
+      return temp
+    })
+    return {
+      status: 'success',
+      data: {
+        books: booksLite
+      }
+    }
+  }
+
+  return {
+    status: 'success',
+    data: {
+      books
+    }
+  }
+}
+
+const getBookByIdHandler = (request, h) => {
+  const { bookId } = request.params
+
+  const index = books.findIndex((book) => book.id === bookId)
+
+  if (index !== -1) {
+    return {
+      status: 'success',
+      data: {
+        book: books[index]
+      }
+    }
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Buku tidak ditemukan'
+  })
+  response.code(404)
+  return response
+}
+
 module.exports = {
-  addBooksHandler
+  addBooksHandler,
+  getAllBooksHandler,
+  getBookByIdHandler
 }
