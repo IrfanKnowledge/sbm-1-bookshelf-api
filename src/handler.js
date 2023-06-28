@@ -2,7 +2,7 @@ const { nanoid } = require('nanoid')
 const { books } = require('./books')
 
 const addBooksHandler = (request, h) => {
-  const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payloadl
+  const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload
 
   if (name === undefined) {
     const response = h.response({
