@@ -60,9 +60,9 @@ const addBooksHandler = (request, h) => {
 
 const getAllBooksHandler = (request, _) => {
   if (books.length > 0) {
-    const { name: vName, reading: vReading, finished: vFinished } = request.query
+    const { name: qName, reading: qReading, finished: qFinished } = request.query
 
-    if (vName === undefined && vReading === undefined && vFinished === undefined) {
+    if (qName === undefined && qReading === undefined && qFinished === undefined) {
       const booksLite = books.map((b) => {
         const { id, name, publisher } = b
         const temp = {
@@ -80,25 +80,24 @@ const getAllBooksHandler = (request, _) => {
     }
 
     /** request.query = true */
-    const name = vName === undefined ? undefined : typeof vName !== 'string' ? undefined : vName.toLowerCase()
-    const reading = vReading === undefined ? undefined : Boolean(vReading)
-    const finished = vFinished === undefined ? undefined : Boolean(vFinished)
+    const queryName = qName === undefined ? undefined : typeof qName !== 'string' ? undefined : qName.toLowerCase()
+    const queryReading = qReading === undefined ? undefined : Boolean(Number(qReading))
+    const queryFinished = qFinished === undefined ? undefined : Boolean(Number(qFinished))
 
     const filteredBooks = books.filter((b) => {
       let selected = false
 
-      if (name !== undefined) {
-        console.log(b.id, name)
-        b.name.includes(name) ? selected = true : selected = false
-        console.log(b.name.includes(name))
+      if (queryName !== undefined) {
+        const bookName = b.name.toLowerCase()
+        bookName.includes(queryName) ? selected = true : selected = false
       }
 
-      if (reading !== undefined) {
-        reading === b.reading ? selected = true : selected = false
+      if (queryReading !== undefined) {
+        queryReading === b.reading ? selected = true : selected = false
       }
 
-      if (finished !== undefined) {
-        finished === b.finished ? selected = true : selected = false
+      if (queryFinished !== undefined) {
+        queryFinished === b.finished ? selected = true : selected = false
       }
       return selected
     })

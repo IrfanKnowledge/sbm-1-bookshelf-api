@@ -10,7 +10,9 @@
     "newman-post-man": "newman run ./newman-collection-environment/bookshelf-api-test-post-mandatory.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json",
     "newman-post-to-getdetail-man": "newman run ./newman-collection-environment/bookshelf-api-test-post-to-getdetail-mandatory.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json",
     "newman-post-to-put-man": "newman run ./newman-collection-environment/bookshelf-api-test-post-to-put-mandatory.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json",
-    "newman-post-to-delete-man": "newman run ./newman-collection-environment/bookshelf-api-test-post-to-delete-mandatory.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json"
+    "newman-post-to-delete-man": "newman run ./newman-collection-environment/bookshelf-api-test-post-to-delete-mandatory.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json",
+    "newman-optional": "newman run ./newman-collection-environment/bookshelf-api-test-optional.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json",
+    "newman-fulltest": "newman run ./newman-collection-environment/bookshelf-api-test.postman_collection.json --environment ./newman-collection-environment/bookshelf-api-test.postman_environment.json"
   },
   "keywords": [],
   "author": "",
