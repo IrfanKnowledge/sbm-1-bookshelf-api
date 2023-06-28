@@ -58,23 +58,70 @@ const addBooksHandler = (request, h) => {
   return response
 }
 
-const getAllBooksHandler = () => {
+const getAllBooksHandler = (request, _) => {
   if (books.length > 0) {
-    const booksLite = books.map((b) => {
-      const { id, name, publisher } = b
-      const temp = {
-        id, name, publisher
+    const { name: vName, reading: vReading, finished: vFinished } = request.query
+
+    if (vName === undefined && vReading === undefined && vFinished === undefined) {
+      const booksLite = books.map((b) => {
+        const { id, name, publisher } = b
+        const temp = {
+          id, name, publisher
+        }
+        return temp
+      })
+
+      return {
+        status: 'success',
+        data: {
+          books: booksLite
+        }
       }
-      return temp
+    }
+
+    /** request.query = true */
+    const name = vName === undefined ? undefined : typeof vName !== 'string' ? undefined : vName.toLowerCase()
+    const reading = vReading === undefined ? undefined : Boolean(vReading)
+    const finished = vFinished === undefined ? undefined : Boolean(vFinished)
+
+    const filteredBooks = books.filter((b) => {
+      let selected = false
+
+      if (name !== undefined) {
+        console.log(b.id, name)
+        b.name.includes(name) ? selected = true : selected = false
+        console.log(b.name.includes(name))
+      }
+
+      if (reading !== undefined) {
+        reading === b.reading ? selected = true : selected = false
+      }
+
+      if (finished !== undefined) {
+        finished === b.finished ? selected = true : selected = false
+      }
+      return selected
     })
-    return {
-      status: 'success',
-      data: {
-        books: booksLite
+
+    if (filteredBooks.length > 0) {
+      const booksLite = filteredBooks.map((b) => {
+        const { id, name, publisher } = b
+        const temp = {
+          id, name, publisher
+        }
+        return temp
+      })
+
+      return {
+        status: 'success',
+        data: {
+          books: booksLite
+        }
       }
     }
   }
 
+  /** books = 0 or [] */
   return {
     status: 'success',
     data: {

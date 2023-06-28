@@ -1,0 +1,63 @@
+{
+    "status": "success",
+    "data": {
+        "books": [
+            {
+                "id": "vbu-6bKRRzoIepVF",
+                "name": "Buku A",
+                "year": 2010,
+                "author": "John Doe",
+                "summary": "Lorem ipsum dolor sit amet",
+                "publisher": "Dicoding Indonesia",
+                "pageCount": 100,
+                "readPage": 100,
+                "finished": true,
+                "reading": true,
+                "insertedAt": "2023-06-28T12:20:39.026Z",
+                "updatedAt": "2023-06-28T12:20:39.026Z"
+            },
+            {
+                "id": "ddj-4v_V3kh3HJN_",
+                "name": "Kelas Dicoding",
+                "year": 2010,
+                "author": "John Doe",
+                "summary": "Lorem ipsum dolor sit amet",
+                "publisher": "Dicoding Indonesia",
+                "pageCount": 100,
+                "readPage": 99,
+                "finished": false,
+                "reading": true,
+                "insertedAt": "2023-06-28T12:20:39.065Z",
+                "updatedAt": "2023-06-28T12:20:39.065Z"
+            },
+            {
+                "id": "6B5V7jDLOF63PvK9",
+                "name": "dicoding Jobs",
+                "year": 2010,
+                "author": "John Doe",
+                "summary": "Lorem ipsum dolor sit amet",
+                "publisher": "Dicoding Indonesia",
+                "pageCount": 100,
+                "readPage": 0,
+                "finished": false,
+                "reading": false,
+                "insertedAt": "2023-06-28T12:20:39.094Z",
+                "updatedAt": "2023-06-28T12:20:39.094Z"
+            },
+            {
+                "id": "TgSfrHS6-SNjmLkP",
+                "name": "Buku A",
+                "year": 2010,
+                "author": "John Doe",
+                "summary": "Lorem ipsum dolor sit amet",
+                "publisher": "Dicoding Indonesia",
+                "pageCount": 100,
+                "readPage": 0,
+                "finished": false,
+                "reading": false,
+                "insertedAt": "2023-06-28T12:20:39.123Z",
+                "updatedAt": "2023-06-28T12:20:39.123Z"
+            }
+        ]
+    }
+}
